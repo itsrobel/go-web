@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"os"
 	"path/filepath"
 
@@ -46,10 +46,10 @@ func main() {
 
 var clickCount = 0
 
-func handleClicked(c *gin.Context) {
-	clickCount++
-	c.String(http.StatusOK, fmt.Sprintf("Clicked %d times", clickCount))
-}
+// func handleClicked(c *gin.Context) {
+// 	clickCount++
+// 	c.String(http.StatusOK, fmt.Sprintf("Clicked %d times", clickCount))
+// }
 
 func serveMarkdown(defaultFile string) gin.HandlerFunc {
 	return func(c *gin.Context) {
