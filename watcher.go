@@ -8,6 +8,8 @@ import (
 	"github.com/fsnotify/fsnotify"
 )
 
+// what else do I need the watcher to do?
+// the watcher should be a web server that handle client requests to then update the client version of the file
 func watcher() {
 	// Create a new watcher
 	watcher, err := fsnotify.NewWatcher()
@@ -44,7 +46,6 @@ func watcher() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Watching directory: %s\n", path)
-
 	// Block main goroutine forever
 	<-make(chan struct{})
 }

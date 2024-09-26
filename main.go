@@ -17,6 +17,7 @@ import (
 )
 
 func main() {
+	watcher()
 	r := gin.Default()
 
 	r.SetFuncMap(template.FuncMap{
