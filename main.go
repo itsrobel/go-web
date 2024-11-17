@@ -18,6 +18,10 @@ import (
 
 func main() {
 	watcher()
+	server()
+}
+
+func server() {
 	r := gin.Default()
 
 	r.SetFuncMap(template.FuncMap{
@@ -41,6 +45,8 @@ func main() {
 	// Handle HTMX requests for page content
 	r.GET("/content/:page", serveMarkdownContent)
 	r.POST("/clicked", handleClicked)
+
+	println("Server running on port 8080")
 
 	r.Run(":8080")
 }
