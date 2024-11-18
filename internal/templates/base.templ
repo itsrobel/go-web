@@ -1,0 +1,30 @@
+package templates
+
+templ Base(title string) {
+    <!DOCTYPE html>
+    <html lang="en" data-theme="light">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>{title}</title>
+            <link href="/static/css/tailwind.css" rel="stylesheet"/>
+            <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        </head>
+        <body>
+            <nav class="navbar bg-base-100">
+                <div class="flex-1">
+                    <a class="btn btn-ghost normal-case text-xl" href="/">My App</a>
+                </div>
+                <div class="flex-none">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="container mx-auto mt-8">
+                {children...}
+            </main>
+        </body>
+    </html>
+}
