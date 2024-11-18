@@ -14,5 +14,7 @@ func main() {
 	r.GET("/", handlers.HomeHandler)
 	r.GET("/about", handlers.AboutHandler)
 
+	r.GET("/markdown", handlers.MarkdownHandler)
+
 	r.Run(":8080")
 }

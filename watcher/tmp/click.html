@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX Gin Example</title>
+    <script src="/static/htmx.min.js"></script>
+  </head>
+  <body>
+    <h1>HTMX Gin Example</h1>
+    <div>
+      <p>Current time: <span id="time">00:00:00</span></p>
+      <button hx-get="/time" hx-target="#time" hx-trigger="click">
+        Update Time
+      </button>
+    </div>
+    <div>
+      <h2>Click counter</h2>
+      <button hx-post="/clicked" hx-swap="innerHTML">Click me</button>
+    </div>
+  </body>
+</html>

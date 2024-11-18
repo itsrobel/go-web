@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX Gin Example</title>
+    <script src="/static/htmx.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      nav {
+        margin-bottom: 20px;
+      }
+      nav a {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/" hx-get="/content/index" hx-target="#content" hx-push-url="/"
+        >Home</a
+      >
+      <a
+        href="/about"
+        hx-get="/content/about"
+        hx-target="#content"
+        hx-push-url="/about"
+        >About</a
+      >
+    </nav>
+    <main id="content">{{ .content | safe }}</main>
+    <!-- <div> -->
+    <!--   <h2>Click counter</h2> -->
+    <!--   <button hx-post="/clicked" hx-swap="innerHTML">Click me</button> -->
+    <!-- </div> -->
+  </body>
+</html>
