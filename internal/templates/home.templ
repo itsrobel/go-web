@@ -1,0 +1,8 @@
+package templates
+
+templ Home() {
+    @Base("Home") {
+        <h1 class="text-3xl font-bold mb-4">Welcome to the Home Page</h1>
+        <button class="btn btn-primary" hx-get="/about" hx-target="body">Go to About Page</button>
+    }
+}
