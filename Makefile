@@ -8,7 +8,10 @@ TEMPL_FILES := $(wildcard $(TEMPL_DIR)/*.templ)
 GENERATED_FILES := $(patsubst $(TEMPL_DIR)/%.templ,$(GENERATED_DIR)/%_templ.go,$(TEMPL_FILES))
 
 # Default target
-all: generate move
+all: install generate move run
+
+install:
+	npm install
 
 # Generate Templ files
 generate:
@@ -21,10 +24,15 @@ move:
 	&& mkdir -p $(TEMPL_DIR)/$(GENERATED_DIR) \
 	&& mv $(TEMPL_DIR)/*_templ.go $(TEMPL_DIR)/$(GENERATED_DIR)/ 2>/dev/null || true
 
+
+run: 
+	go run cmd/server/main.go
+
+
 # Clean generated files
 clean:
 	@echo "Cleaning generated files..."
-	@rm -rf $(GENERATED_DIR)
+	@rm -rf $(TEMPL_DIR)/$(GENERATED_DIR)
 
 # Phony targets
-.PHONY: all generate move clean
+.PHONY: all generate move clean run install
