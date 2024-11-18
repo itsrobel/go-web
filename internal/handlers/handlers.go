@@ -29,7 +29,11 @@ func MarkdownHandler(c *gin.Context) {
 		return
 	}
 	// Convert markdown to HTML
-	htmlContent := string(blackfriday.Run(content))
+	// htmlContent := string(blackfriday.Run(content))
+
+	htmlContent := string(blackfriday.Run(content,
+		blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
+	))
 
 	// Render the template with the HTML content
 	c.Writer.Header().Set("Content-Type", "text/html")
