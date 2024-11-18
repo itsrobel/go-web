@@ -3,19 +3,16 @@ package main
 import (
 	"web/internal/handlers"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	e := echo.New()
+	r := gin.Default()
 
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
+	r.Static("/static", "./static")
 
-	e.Static("/static", "static")
+	r.GET("/", handlers.HomeHandler)
+	r.GET("/about", handlers.AboutHandler)
 
-	e.GET("/", handlers.HomeHandler)
-	e.GET("/about", handlers.AboutHandler)
-	e.Logger.Fatal(e.Start(":8080"))
+	r.Run(":8080")
 }
