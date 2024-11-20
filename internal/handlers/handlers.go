@@ -19,9 +19,9 @@ func AboutHandler(c *gin.Context) {
 	templates.About().Render(c.Request.Context(), c.Writer)
 }
 
-func MarkdownHandler(c *gin.Context) {
+func MarkdownHandler(c *gin.Context, file string) {
 	// Path to your markdown file
-	markdownFilePath := "content/something.md"
+	markdownFilePath := "string"
 	content, err := os.ReadFile(markdownFilePath)
 	if err != nil {
 		log.Printf("Failed to read markdown file: %v", err)
