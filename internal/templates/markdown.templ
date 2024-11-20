@@ -1,24 +1,9 @@
 package templates
 
 templ MarkdownPage(htmlContent string) {
-    @Base("Markdown Page") {
-        <div class="prose max-w-none">
-           @templ.Raw(htmlContent)
-
-
-<style>
-  .katex-version {display: none;}
-  .katex-version::after {content:"0.10.2 or earlier";}
-</style>
-<span class="katex">
-  <span class="katex-mathml">The KaTeX stylesheet is not loaded!</span>
-  <span class="katex-version rule">KaTeX stylesheet version: </span>
-</span>
-<span>
-
-$$E = mc^2$$
-</span>
-
-        </div>
-    }
+	@Base("Markdown Page") {
+		<div class="prose max-w-none">
+			@templ.Raw(htmlContent)
+		</div>
+	}
 }

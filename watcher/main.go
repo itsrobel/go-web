@@ -40,7 +40,6 @@ func server() {
 	r.GET("/:page", serveMarkdown(""))
 
 	// Handle HTMX requests for page content
-	r.GET("/content/:page", serveMarkdownContent)
 	r.POST("/clicked", handleClicked)
 
 	println("Server running on port 8080")

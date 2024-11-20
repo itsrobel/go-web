@@ -49,7 +49,7 @@ func MarkdownPage(htmlContent string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<style>\n  .katex-version {display: none;}\n  .katex-version::after {content:\"0.10.2 or earlier\";}\n</style><span class=\"katex\"><span class=\"katex-mathml\">The KaTeX stylesheet is not loaded!</span> <span class=\"katex-version rule\">KaTeX stylesheet version: </span></span> <span>$$E = mc^2$$</span></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
