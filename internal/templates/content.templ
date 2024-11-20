@@ -1,7 +1,7 @@
 package templates
 
-templ MarkdownPage(htmlContent string) {
-	@Base("Markdown Page") {
+templ ContentPage(htmlContent string) {
+	@Base("Content Page") {
 		<div class="prose max-w-none">
 			@templ.Raw(htmlContent)
 		</div>
