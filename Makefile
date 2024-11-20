@@ -8,16 +8,18 @@ TEMPL_FILES := $(wildcard $(TEMPL_DIR)/*.templ)
 GENERATED_FILES := $(patsubst $(TEMPL_DIR)/%.templ,$(GENERATED_DIR)/%_templ.go,$(TEMPL_FILES))
 
 # Default target
-all: install generate run
+all: generate run
 
-install:
-	npm install
+
+tail:
+	@echo "Compiling css"
+	bun install \
+	&& bun run build:css
 
 # Generate Templ files
 generate:
 	@echo "Generating Templ files..."
 	@templ generate \
-	&& npm run build-css
 
 
 # Move generated files to subdirectory
@@ -34,4 +36,4 @@ run:
 # Clean generated files
 
 # Phony targets
-.PHONY: all generate  run install
+.PHONY: all generate run

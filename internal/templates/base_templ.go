@@ -29,20 +29,20 @@ func Base(title string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" data-theme=\"light\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" data-theme=\"light\"><head><meta charset=\"UTF-8\"><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/base.templ`, Line: 9, Col: 17}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/base.templ`, Line: 8, Col: 17}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"/static/js/htmx.min.js\"></script><script src=\"https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js\"></script><!-- <link href=\"/staic/css/katex.min.css\" rel=\"stylesheet\"/> --><!-- <script src=\"/static/js/katex.min.js\"></script> --><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css\" integrity=\"sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+\" crossorigin=\"anonymous\"><script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js\" integrity=\"sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg\" crossorigin=\"anonymous\"></script><script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js\" integrity=\"sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk\" crossorigin=\"anonymous\"></script><script>\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        renderMathInElement(document.body, {\n          // customised options\n          // • auto-render specific keys, e.g.:\n          delimiters: [\n              {left: '$$', right: '$$', display: true},\n              {left: '$', right: '$', display: true},\n              {left: '\\\\(', right: '\\\\)', display: false},\n              {left: '\\\\[', right: '\\\\]', display: true}\n          ],\n          // • rendering keys, e.g.:\n          throwOnError : false\n        });\n    });\n</script></head><body><nav class=\"navbar bg-base-100\"><div class=\"flex-1\"><a class=\"btn btn-ghost normal-case text-xl\" href=\"/\">My App</a></div><div class=\"flex-none\"><ul class=\"menu menu-horizontal px-1\"><li><a href=\"/\">Home</a></li><li><a href=\"/about\">About</a></li><li><div class=\"block\"><span data-toggle-theme=\"buisness,retro\" data-act-class=\"pl-4\" class=\"border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0\"><span class=\"rounded-full w-3 h-3 m-1 bg-green-700\"></span></span></div></li></ul></div></nav><main class=\"container mx-auto mt-8\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link href=\"/static/css/output.css\" rel=\"stylesheet\"><script src=\"/static/js/htmx.min.js\"></script><script src=\"https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js\"></script><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css\" integrity=\"sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+\" crossorigin=\"anonymous\"><script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js\" integrity=\"sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg\" crossorigin=\"anonymous\"></script><script defer src=\"https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js\" integrity=\"sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk\" crossorigin=\"anonymous\"></script><script>\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        renderMathInElement(document.body, {\n          // customised options\n          // • auto-render specific keys, e.g.:\n          delimiters: [\n              {left: '$$', right: '$$', display: true},\n              {left: '$', right: '$', display: true},\n              {left: '\\\\(', right: '\\\\)', display: false},\n              {left: '\\\\[', right: '\\\\]', display: true}\n          ],\n          // • rendering keys, e.g.:\n          throwOnError : false\n        });\n    });\n</script></head><body><nav class=\"navbar bg-base-100\"><div class=\"flex-1\"><a class=\"btn btn-ghost normal-case text-xl\" href=\"/\">My App</a></div><div class=\"flex-none\"><ul class=\"menu menu-horizontal px-1\"><li><a href=\"/\">Home</a></li><li><a href=\"/about\">About</a></li><li><div class=\"block\"><span data-toggle-theme=\"retro,buisness\" data-act-class=\"pl-4\" class=\"border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0\"><span class=\"rounded-full w-3 h-3 m-1 bg-green-700\"></span></span></div></li></ul></div></nav><main class=\"container mx-auto mt-8\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +50,7 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main><div class=\"mockup-code\"><pre data-prefix=\"$\"><code>npm i daisyui</code></pre><pre data-prefix=\"&gt;\" class=\"text-warning\"><code>installing...</code></pre><pre data-prefix=\"&gt;\" class=\"text-success\"><code>Done!</code></pre></div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
