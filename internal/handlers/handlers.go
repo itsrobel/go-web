@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"net/http"
 	"os"
 	"path/filepath"
 	"web/internal/templates"
@@ -19,19 +18,22 @@ func AboutHandler(c *gin.Context) {
 	templates.About().Render(c.Request.Context(), c.Writer)
 }
 
-func MarkdownHandler(c *gin.Context) {
+func ContentHandler(c *gin.Context) {
 	page := c.Param("page") + ".md"
 	// content, err := os.ReadFile(filepath.Join("content", page))
 	content, err := os.ReadFile(filepath.Join("content", page))
+	var htmlContent string
 	if err != nil {
-		c.String(http.StatusNotFound, "Page not found")
+		// TODO: I should make an actual page for this later c.String(http.StatusNotFound, "Page not found")
+		htmlContent = "Page not found"
+	} else {
+		htmlContent = string(blackfriday.Run(content,
+			blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
+		))
 	}
-	htmlContent := string(blackfriday.Run(content,
-		blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
-	))
 
 	// Render the template with the HTML content
 	c.Writer.Header().Set("Content-Type", "text/html")
 	// Pass the HTML content as templ.HTML type
-	templates.MarkdownPage(htmlContent).Render(c.Request.Context(), c.Writer)
+	templates.ContentPage(htmlContent).Render(c.Request.Context(), c.Writer)
 }

@@ -13,10 +13,10 @@ func main() {
 
 	r.GET("/", handlers.HomeHandler)
 	r.GET("/about", handlers.AboutHandler)
-	r.GET("/:page", handlers.MarkdownHandler)
+	r.GET("/:page", handlers.ContentHandler)
 
 	// TODO: for the files found in the content folder server them in content
-	// r.GET("/markdown", handlers.MarkdownHandler)
+	// r.GET("/markdown", handlers.ContentHandler)
 
 	r.Run(":8080")
 }

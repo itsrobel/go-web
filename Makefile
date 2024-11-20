@@ -16,7 +16,9 @@ install:
 # Generate Templ files
 generate:
 	@echo "Generating Templ files..."
-	@templ generate
+	@templ generate \
+	&& npm run build-css
+
 
 # Move generated files to subdirectory
 # move:

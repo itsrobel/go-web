@@ -4,7 +4,8 @@
   "description": "This project will be the landing page of steflabs.co",
   "main": "tailwind.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "tailwindcss -i ./static/css/input.css -o ./static/css/output.css"
   },
   "keywords": [],
   "author": "",
