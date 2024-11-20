@@ -5,13 +5,11 @@ templ Base(title string) {
 	<html lang="en" data-theme="light">
 		<head>
 			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>{ title }</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link href="/static/css/output.css" rel="stylesheet"/>
 			<script src="/static/js/htmx.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-			<!-- <link href="/staic/css/katex.min.css" rel="stylesheet"/> -->
-			<!-- <script src="/static/js/katex.min.js"></script> -->
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"/>
 			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
 			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
@@ -43,7 +41,7 @@ templ Base(title string) {
 						<li><a href="/about">About</a></li>
 						<li>
 							<div class="block">
-								<span data-toggle-theme="buisness,retro" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
+								<span data-toggle-theme="retro,buisness" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
 									<span class="rounded-full w-3 h-3 m-1 bg-green-700"></span>
 								</span>
 							</div>
@@ -54,6 +52,11 @@ templ Base(title string) {
 			<main class="container mx-auto mt-8">
 				{ children... }
 			</main>
+			<div class="mockup-code">
+				<pre data-prefix="$"><code>npm i daisyui</code></pre>
+				<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
+				<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+			</div>
 		</body>
 	</html>
 }
