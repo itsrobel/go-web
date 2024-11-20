@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"web/internal/templates"
 
 	// "github.com/a-h/templ"
@@ -19,25 +19,19 @@ func AboutHandler(c *gin.Context) {
 	templates.About().Render(c.Request.Context(), c.Writer)
 }
 
-func MarkdownHandler(c *gin.Context, file string) {
-	// Path to your markdown file
-	markdownFilePath := "string"
-	content, err := os.ReadFile(markdownFilePath)
+func MarkdownHandler(c *gin.Context) {
+	page := c.Param("page") + ".md"
+	// content, err := os.ReadFile(filepath.Join("content", page))
+	content, err := os.ReadFile(filepath.Join("content", page))
 	if err != nil {
-		log.Printf("Failed to read markdown file: %v", err)
-		c.String(http.StatusInternalServerError, "Error loading markdown file")
-		return
+		c.String(http.StatusNotFound, "Page not found")
 	}
-	// Convert markdown to HTML
-	// htmlContent := string(blackfriday.Run(content))
-
 	htmlContent := string(blackfriday.Run(content,
 		blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
 	))
 
 	// Render the template with the HTML content
 	c.Writer.Header().Set("Content-Type", "text/html")
-
 	// Pass the HTML content as templ.HTML type
 	templates.MarkdownPage(htmlContent).Render(c.Request.Context(), c.Writer)
 }
