@@ -7,6 +7,5 @@ Here is an inline formula: $E = mc^2$
 And here is a block formula:
 
 $$
-
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
 $$
