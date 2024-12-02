@@ -11,7 +11,8 @@ import (
 )
 
 func HomeHandler(c *gin.Context) {
-	templates.Home().Render(c.Request.Context(), c.Writer)
+	fileList := []string{"one", "2", "3"}
+	templates.Home(fileList).Render(c.Request.Context(), c.Writer)
 }
 
 func AboutHandler(c *gin.Context) {

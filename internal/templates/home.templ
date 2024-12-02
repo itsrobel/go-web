@@ -1,8 +1,9 @@
 package templates
 
-templ Home() {
+templ Home(FileList []string) {
 	@Base("Home") {
 		<h1 class="text-3xl font-bold mb-4">Welcome to the Home Page</h1>
+		@FileListContent(FileList)
 		<button class="btn btn-primary" hx-get="/about" hx-target="body">Go to About Page</button>
 		<div
 			class="hero min-h-screen"

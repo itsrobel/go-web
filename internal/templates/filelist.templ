@@ -1,0 +1,21 @@
+package templates 
+
+// templ FileList() {
+// 	@FileListContent()
+// }
+templ ContentItem(name string) {
+	<li><a>{ name }</a></li>
+}
+
+templ FileListContent(FileList []string) {
+	<div class="card w-96 bg-base-100 shadow-xl">
+		<div class="card-body">
+			<h2 class="card-title">Files in Contents Folder</h2>
+			<ul class="menu bg-base-200 w-full rounded-box">
+				for _, name := range FileList {
+					@ContentItem(name)
+				}
+			</ul>
+		</div>
+	</div>
+}
