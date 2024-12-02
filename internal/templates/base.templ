@@ -41,7 +41,7 @@ templ Base(title string) {
 						<li><a href="/about">About</a></li>
 						<li>
 							<div class="block">
-								<span data-toggle-theme="retro,buisness" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
+								<span data-toggle-theme="dim,wireframe" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
 									<span class="rounded-full w-3 h-3 m-1 bg-green-700"></span>
 								</span>
 							</div>
@@ -52,11 +52,6 @@ templ Base(title string) {
 			<main class="container mx-auto mt-8">
 				{ children... }
 			</main>
-			<div class="mockup-code">
-				<pre data-prefix="$"><code>npm i daisyui</code></pre>
-				<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
-				<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
-			</div>
 		</body>
 	</html>
 }
