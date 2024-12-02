@@ -1,10 +1,10 @@
 package templates
 
-templ Home(FileList []string) {
+import "web/internal/types"
+
+templ Home(FileList []string, ContactList []types.Contact) {
 	@Base("Home") {
-		<h1 class="text-3xl font-bold mb-4">Welcome to the Home Page</h1>
-		@FileListContent(FileList)
-		<button class="btn btn-primary" hx-get="/about" hx-target="body">Go to About Page</button>
+		<!-- <h1 class="text-3xl font-bold mb-4">Welcome to the Home Page</h1> -->
 		<div
 			class="hero min-h-screen"
 			style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);"
@@ -20,6 +20,10 @@ templ Home(FileList []string) {
 					<button class="btn btn-primary">Get Started</button>
 				</div>
 			</div>
+		</div>
+		<div class="flex flex-row">
+			@ContentTemp(FileList)
+			@ContactTemp(ContactList)
 		</div>
 	}
 }

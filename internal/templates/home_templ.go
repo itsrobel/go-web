@@ -8,7 +8,9 @@ package templates
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Home(FileList []string) templ.Component {
+import "web/internal/types"
+
+func Home(FileList []string, ContactList []types.Contact) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -41,15 +43,19 @@ func Home(FileList []string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1 class=\"text-3xl font-bold mb-4\">Welcome to the Home Page</h1>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- <h1 class=\"text-3xl font-bold mb-4\">Welcome to the Home Page</h1> --> <div class=\"hero min-h-screen\" style=\"background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);\"><div class=\"hero-overlay bg-opacity-60\"></div><div class=\"hero-content text-neutral-content text-center\"><div class=\"max-w-md\"><h1 class=\"mb-5 text-5xl font-bold\">Hello there</h1><p class=\"mb-5\">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p><button class=\"btn btn-primary\">Get Started</button></div></div></div><div class=\"flex flex-row\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = FileListContent(FileList).Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = ContentTemp(FileList).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <button class=\"btn btn-primary\" hx-get=\"/about\" hx-target=\"body\">Go to About Page</button><div class=\"hero min-h-screen\" style=\"background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);\"><div class=\"hero-overlay bg-opacity-60\"></div><div class=\"hero-content text-neutral-content text-center\"><div class=\"max-w-md\"><h1 class=\"mb-5 text-5xl font-bold\">Hello there</h1><p class=\"mb-5\">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p><button class=\"btn btn-primary\">Get Started</button></div></div></div>")
+			templ_7745c5c3_Err = ContactTemp(ContactList).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

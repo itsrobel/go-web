@@ -1,9 +1,12 @@
 package handlers
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"web/internal/templates"
+	"web/internal/types"
 
 	// "github.com/a-h/templ"
 	"github.com/gin-gonic/gin"
@@ -11,8 +14,16 @@ import (
 )
 
 func HomeHandler(c *gin.Context) {
-	fileList := []string{"one", "2", "3"}
-	templates.Home(fileList).Render(c.Request.Context(), c.Writer)
+	contentDir, _ := os.ReadDir("content")
+
+	contentDirNames := make([]string, len(contentDir))
+	for i, file := range contentDir {
+		contentDirNames[i] = strings.Split(file.Name(), ".")[0]
+	}
+
+	fmt.Printf("Content directory: %s\n", contentDirNames)
+
+	templates.Home(contentDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
 }
 
 func AboutHandler(c *gin.Context) {
@@ -37,4 +48,13 @@ func ContentHandler(c *gin.Context) {
 	c.Writer.Header().Set("Content-Type", "text/html")
 	// Pass the HTML content as templ.HTML type
 	templates.ContentPage(htmlContent).Render(c.Request.Context(), c.Writer)
+}
+
+func getContacts() []types.Contact {
+	contactInfo := []types.Contact{
+		{Name: "Email", Icon: "fa-envelope", Link: "mailto:itsrobel.schwarz@gmail.com"},
+		{Name: "GitHub", Icon: "fa-github", Link: "https://github.com/itsrobel"},
+		{Name: "LinkedIn", Icon: "fa-linkedin", Link: "https://www.linkedin.com/in/robel-schwarz/"},
+	}
+	return contactInfo
 }
