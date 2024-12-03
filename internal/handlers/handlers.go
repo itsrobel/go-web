@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
@@ -57,4 +58,32 @@ func getContacts() []types.Contact {
 		{Name: "LinkedIn", Icon: "fa-linkedin", Link: "https://www.linkedin.com/in/robel-schwarz/"},
 	}
 	return contactInfo
+}
+
+func RedirectSaveContact(c *gin.Context) {
+	c.Header("HX-Redirect", "/save-contact")
+	c.Status(200)
+}
+
+func SaveContact(c *gin.Context) {
+	contact := struct {
+		Fname string
+		Lname string
+		Phone string
+		Email string
+	}{
+		Fname: "Robel",
+		Lname: "Schwarz",
+		Phone: "4257613775",
+		Email: "itsrobel.schwarz@gmail.com",
+	}
+
+	vcard := fmt.Sprintf(
+		"BEGIN:VCARD\nVERSION:3.0\nN:%s;%s;;;\nFN:%s %s\nTEL:%s\nEMAIL:%s\nEND:VCARD",
+		contact.Lname, contact.Fname, contact.Fname, contact.Lname, contact.Phone, contact.Email,
+	)
+
+	c.Header("Content-Type", "text/vcard; charset=utf-8")
+	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
+	c.String(http.StatusOK, vcard)
 }

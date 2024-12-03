@@ -20,6 +20,8 @@ func main() {
 	r.GET("/", handlers.HomeHandler)
 	r.GET("/about", handlers.AboutHandler)
 	r.GET("/:page", handlers.ContentHandler)
+	r.GET("/save-contact", handlers.SaveContact)
+	r.GET("/redirect-save-contact", handlers.RedirectSaveContact)
 
 	srv := &http.Server{
 		Addr:    ":8080",

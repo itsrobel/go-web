@@ -41,7 +41,6 @@ func server() {
 
 	// Handle HTMX requests for page content
 	r.POST("/clicked", handleClicked)
-
 	println("Server running on port 8080")
 
 	r.Run(":8080")
