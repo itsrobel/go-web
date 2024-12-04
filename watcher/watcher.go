@@ -11,7 +11,7 @@ import (
 // what else do I need the watcher to do?
 // the watcher should be a web server that handle client requests to then update the client version of the file
 
-func watchContent(watcher *fsnotify.Watcher) {
+func watchBlog(watcher *fsnotify.Watcher) {
 	for {
 		select {
 		case event, ok := <-watcher.Events:
@@ -42,11 +42,11 @@ func watcher() {
 	// Start listening for events
 
 	// Add a path to watch
-	path, _ := filepath.Abs("./content")
+	path, _ := filepath.Abs("./blog")
 	err = watcher.Add(path)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Watching directory: %s\n", path)
-	go watchContent(watcher)
+	go watchBlog(watcher)
 }

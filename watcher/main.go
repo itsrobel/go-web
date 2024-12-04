@@ -39,7 +39,7 @@ func server() {
 	// Handle other Markdown files
 	r.GET("/:page", serveMarkdown(""))
 
-	// Handle HTMX requests for page content
+	// Handle HTMX requests for page blog
 	r.POST("/clicked", handleClicked)
 	println("Server running on port 8080")
 
@@ -62,33 +62,33 @@ func serveMarkdown(defaultFile string) gin.HandlerFunc {
 			page += ".md"
 		}
 
-		content, err := os.ReadFile(filepath.Join("content", page))
+		blog, err := os.ReadFile(filepath.Join("blog", page))
 		if err != nil {
 			c.String(http.StatusNotFound, "Page not found")
 			return
 		}
 
 		// Convert Markdown to HTML
-		html := blackfriday.Run(content)
+		html := blackfriday.Run(blog)
 
 		// Render the HTML within the layout template
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"content": string(html),
+			"blog": string(html),
 		})
 	}
 }
 
-func serveMarkdownContent(c *gin.Context) {
+func serveMarkdownBlog(c *gin.Context) {
 	page := c.Param("page")
-	content, err := os.ReadFile(filepath.Join("content", page+".md"))
+	blog, err := os.ReadFile(filepath.Join("blog", page+".md"))
 	if err != nil {
 		c.String(http.StatusNotFound, "Page not found")
 		return
 	}
 
 	// Convert Markdown to HTML
-	html := blackfriday.Run(content)
+	html := blackfriday.Run(blog)
 
-	c.Header("Content-Type", "text/html")
+	c.Header("Blog-Type", "text/html")
 	c.String(http.StatusOK, string(html))
 }

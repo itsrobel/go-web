@@ -14,41 +14,43 @@ import (
 	"github.com/russross/blackfriday/v2"
 )
 
-func HomeHandler(c *gin.Context) {
-	contentDir, _ := os.ReadDir("content")
+var blogDir = "content/blog"
 
-	contentDirNames := make([]string, len(contentDir))
-	for i, file := range contentDir {
-		contentDirNames[i] = strings.Split(file.Name(), ".")[0]
+func HomeHandler(c *gin.Context) {
+	blogDir, _ := os.ReadDir(blogDir)
+
+	blogDirNames := make([]string, len(blogDir))
+	for i, file := range blogDir {
+		blogDirNames[i] = strings.Split(file.Name(), ".")[0]
 	}
 
-	fmt.Printf("Content directory: %s\n", contentDirNames)
+	fmt.Printf("Blog directory: %s\n", blogDirNames)
 
-	templates.Home(contentDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
+	templates.Home(blogDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
 }
 
 func AboutHandler(c *gin.Context) {
 	templates.About().Render(c.Request.Context(), c.Writer)
 }
 
-func ContentHandler(c *gin.Context) {
+func BlogHandler(c *gin.Context) {
 	page := c.Param("page") + ".md"
-	// content, err := os.ReadFile(filepath.Join("content", page))
-	content, err := os.ReadFile(filepath.Join("content", page))
-	var htmlContent string
+	// blog, err := os.ReadFile(filepath.Join("blog", page))
+	blog, err := os.ReadFile(filepath.Join(blogDir, page))
+	var htmlBlog string
 	if err != nil {
 		// TODO: I should make an actual page for this later c.String(http.StatusNotFound, "Page not found")
-		htmlContent = "Page not found"
+		htmlBlog = "Page not found"
 	} else {
-		htmlContent = string(blackfriday.Run(content,
+		htmlBlog = string(blackfriday.Run(blog,
 			blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
 		))
 	}
 
-	// Render the template with the HTML content
-	c.Writer.Header().Set("Content-Type", "text/html")
-	// Pass the HTML content as templ.HTML type
-	templates.ContentPage(htmlContent).Render(c.Request.Context(), c.Writer)
+	// Render the template with the HTML blog
+	c.Writer.Header().Set("Blog-Type", "text/html")
+	// Pass the HTML blog as templ.HTML type
+	templates.BlogPage(htmlBlog).Render(c.Request.Context(), c.Writer)
 }
 
 func getContacts() []types.Contact {
@@ -83,7 +85,7 @@ func SaveContact(c *gin.Context) {
 		contact.Lname, contact.Fname, contact.Fname, contact.Lname, contact.Phone, contact.Email,
 	)
 
-	c.Header("Content-Type", "text/vcard; charset=utf-8")
-	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
+	c.Header("Blog-Type", "text/vcard; charset=utf-8")
+	c.Header("Blog-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
 	c.String(http.StatusOK, vcard)
 }

@@ -1,10 +1,13 @@
 module.exports = {
   content: ["./internal/templates/**/*.templ"],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   theme: {
-    extend: {},
+    fontFamily: {
+      'excali': ["Excalifont", "sans-serif"],
+      'mono': ["SFMono-Regular", 'jetbrains mono', "monospace"],
+    },
   },
 
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 
   daisyui: {
     themes: ["wireframe", "dim"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]

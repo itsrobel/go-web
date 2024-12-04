@@ -1,6 +1,6 @@
 package templates
 
-templ ContentPage(htmlContent string) {
+templ BlogPage(htmlContent string) {
 	@Base("Content Page") {
 		<div class="prose max-w-none">
 			@templ.Raw(htmlContent)

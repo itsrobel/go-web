@@ -1,16 +1,16 @@
 package templates 
 
-templ ContentItem(name string) {
+templ BlogItem(name string) {
 	<li><a href={ templ.URL(name) }>{ name }</a></li>
 }
 
-templ ContentTemp(FileList []string) {
+templ BlogTemp(FileList []string) {
 	<div class="card w-96 bg-base-100 shadow-xl">
 		<div class="card-body">
 			<h2 class="card-title">Articals</h2>
 			<ul class="menu bg-base-200 w-full rounded-box">
 				for _, name := range FileList {
-					@ContentItem(name)
+					@BlogItem(name)
 				}
 			</ul>
 		</div>

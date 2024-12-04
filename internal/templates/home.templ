@@ -2,28 +2,35 @@ package templates
 
 import "web/internal/types"
 
+templ Profile(imgString string, ContactList []types.Contact) {
+	<div class="card md:max-w-96 bg-base-100 shadow-xl">
+		<div class="card-body sm:justify-center ">
+			<img
+				src={ imgString }
+				class="max-w-sm rounded-lg shadow-2xl"
+			/>
+			<h1 class="font-mono font-bold">Robel Schwarz | Louisville, KY</h1>
+			@ContactTemp(ContactList)
+		</div>
+	</div>
+}
+
 templ Home(FileList []string, ContactList []types.Contact) {
 	@Base("Home") {
-		<!-- <h1 class="text-3xl font-bold mb-4">Welcome to the Home Page</h1> -->
-		<div
-			class="hero min-h-screen"
-			style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);"
-		>
-			<div class="hero-overlay bg-opacity-60"></div>
-			<div class="hero-content text-neutral-content text-center">
-				<div class="max-w-md">
-					<h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-					<p class="mb-5">
-						Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-						quasi. In deleniti eaque aut repudiandae et a id nisi.
-					</p>
-					<button class="btn btn-primary">Get Started</button>
+		<div class="flex flex-col md:flex-row md:justify-between">
+			@Profile("/static/img/pf1.jpg", ContactList)
+			<div>
+				<h1 class="text-5xl font-bold font-excali">Box Office News!</h1>
+				<p class="py-6">
+					Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+					quasi. In deleniti eaque aut repudiandae et a id nisi.
+				</p>
+				<button class="btn btn-primary">Get Started</button>
+				<!-- </div> -->
+				<div class="flex flex-row">
+					@BlogTemp(FileList)
 				</div>
 			</div>
-		</div>
-		<div class="flex flex-row">
-			@ContentTemp(FileList)
-			@ContactTemp(ContactList)
 		</div>
 	}
 }
