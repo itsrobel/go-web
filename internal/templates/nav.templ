@@ -1,44 +1,41 @@
 package templates
 
+templ NavLinks() {
+	<a href="/">
+		<h1>Home</h1>
+	</a>
+	<a href="/about">
+		<h1>About</h1>
+	</a>
+	<span data-toggle-theme="dim,wireframe" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
+		<span class="rounded-full w-3 h-3 m-1 bg-green-700"></span>
+	</span>
+}
+
 templ Nav() {
 	<div>
 		//NOTE: Mobile nav toggle
 		<div class="md:hidden">
 			<div class="z-10 fixed bottom-4 right-4">
-				<button class="menu-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg focus:outline-none">
-					+
+				<button class="menu-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-10 h-10 rounded-full shadow-lg focus:outline-none">
+					<i class="fa-solid fa-cube"></i>
 				</button>
 			</div>
 		</div>
 		//NOTE: Mobile nav
 		<!-- Full-Screen Mobile Menu -->
-		<div class="mobile-menu fixed inset-0 bg-gray-800 bg-opacity-95 hidden flex flex-col items-center justify-center space-y-4 z-50 transform -translate-x-full opacity-0 transition-all duration-500 ease-in-out">
-			<a href="/">
-				<h1>Home</h1>
-			</a>
-			<a href="/about">
-				<h1>About</h1>
-			</a>
-			<!-- <a href="#" class="text-white text-lg">Contact</a> -->
-			<!-- Close Button -->
-			<button class="close-button absolute top-4 right-4 text-white focus:outline-none">
-				X
+		<div class="mobile-menu fixed inset-0 dark:bg-gray-800 bg-gray-200 bg-opacity-95 hidden flex flex-col items-center justify-center space-y-4 z-50 transform -translate-x-full opacity-0 transition-all duration-500 ease-in-out">
+			@NavLinks()
+			<button class="close-button absolute top-4 right-4 focus:outline-none">
+				<i class="fa-solid fa-arrow-right-from-bracket"></i>
 			</button>
 		</div>
 		//NOTE:Normal nav
 		<div class="hidden md:flex w-full md:justify-center">
 			<nav class=" navbar bg-base-100 flex-none shadow-2xl font-bold font-excali flex justify-center space-x-8 mt-8 rounded-lg md:w-4/5 ">
-				<a href="/">
-					<h1>Home</h1>
-				</a>
-				<a href="/about">
-					<h1>About</h1>
-				</a>
-				<div class="block">
-					<span data-toggle-theme="dim,wireframe" data-act-class="pl-4" class="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
-						<span class="rounded-full w-3 h-3 m-1 bg-green-700"></span>
-					</span>
-				</div>
+				@NavLinks()
+				<!-- <div class="block"> -->
+				// </div>
 			</nav>
 		</div>
 	</div>

@@ -7,6 +7,12 @@ It has a dynamic content management system where it watches for changes in the "
 - [x] HTMX for client side request handling
 - [x] Daisy UI since find tailwind to be generally a nightmare to work with
 
-- [ ] Finish Designing the UI and make it look nice
-- [ ] Make a photography page
+- [x] Finish Designing the UI and make it look nice
+- [ ] Make pages
+  - [ ] resume
+  - [ ] projects
+  - [ ] login
+
+
+- [ ] add more details and use markdown toml config
 - [ ] Finish Docker Deployment
