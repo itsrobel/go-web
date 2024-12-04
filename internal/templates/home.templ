@@ -3,35 +3,32 @@ package templates
 import "web/internal/types"
 
 templ Profile(imgString string, ContactList []types.Contact) {
-	<div class="card md:max-w-96 bg-base-100 shadow-xl">
-		<div class="card-body sm:justify-center flex flex-row md:flex-col">
+	<div class="card md:max-w-96 bg-base-100 shadow-xl rounded-lg">
+		<div class="card-body sm:justify-center items-center flex flex-row md:flex-col">
 			<img
 				src={ imgString }
 				class="md:h-full md:w-full h-24 w-24 rounded-full shadow-2xl"
 			/>
 			@ContactTemp(ContactList)
 		</div>
-		<!-- <h1 class="font-mono font-bold">Robel Schwarz | Louisville, KY</h1> -->
+	</div>
+}
+
+templ Bio(htmlContent string, FileList []string) {
+	<div class="card-body sm:justify-center items-center flex flex-col">
+		<div class="prose max-w-none">
+			@templ.Raw(htmlContent)
+		</div>
+		@BlogTemp(FileList)
 	</div>
 }
 
 //TODO: remove margin top on small, remove navbar on small
 templ Home(htmlContent string, FileList []string, ContactList []types.Contact) {
 	@Base("Home") {
-		<div class="flex flex-col md:flex-row md:justify-around">
+		<div class="flex flex-col  md:flex-row md:justify-around">
 			@Profile("/static/img/pf1.jpg", ContactList)
-			<div>
-				<!-- <div class="prose max-w-none"> -->
-				<!-- 	@templ.Raw(htmlContent) -->
-				<!-- </div> -->
-				<div class="card w-96 bg-base-100 shadow-xl">
-					<h1 class="text-5xl font-bold font-excali">Box Office News!</h1>
-					<div class="prose max-w-none">
-						@templ.Raw(htmlContent)
-					</div>
-					@BlogTemp(FileList)
-				</div>
-			</div>
+			@Bio(htmlContent, FileList)
 		</div>
 	}
 }

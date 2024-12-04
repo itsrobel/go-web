@@ -2263,12 +2263,12 @@ html {
   height: 0.75rem;
 }
 
-.h-64 {
-  height: 16rem;
-}
-
 .h-full {
   height: 100%;
+}
+
+.max-h-80 {
+  max-height: 20rem;
 }
 
 .w-10 {
@@ -2431,10 +2431,6 @@ html {
 
 .font-excali {
   font-family: Excalifont, sans-serif;
-}
-
-.font-mono {
-  font-family: SFMono-Regular, jetbrains mono, monospace;
 }
 
 .text-3xl {

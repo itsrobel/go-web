@@ -7,9 +7,6 @@ templ ContactItem(contact types.Contact) {
 }
 
 templ ContactTemp(contacts []types.Contact) {
-	<!-- <div class="card w-96 bg-base-100 shadow-xl"> -->
-	<!-- 	<div class="card-body"> -->
-	<!-- <h2 class="card-title">Contact</h2> -->
 	<ul class="menu bg-base-200 rounded-box">
 		<!-- TODO: make this visuable if someone is using the contact card -->
 		<!-- <li> -->
@@ -23,9 +20,4 @@ templ ContactTemp(contacts []types.Contact) {
 			@ContactItem(contact)
 		}
 	</ul>
-	<!-- <div class="card-actions justify-end"> -->
-	<!-- 	<button hx-get="/redirect-save-contact" hx-target="this" hx-swap="none" class="btn btn-primary">Save Contact</button> -->
-	<!-- </div> -->
-	<!-- 	</div> -->
-	<!-- </div> -->
 }
