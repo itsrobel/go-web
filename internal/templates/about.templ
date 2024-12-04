@@ -1,9 +1,12 @@
 package templates
 
-templ About() {
-    @Base("About") {
-        <h1 class="text-3xl font-bold mb-4">About Us</h1>
-        <p class="mb-4">This is a simple two-page application using Go, Templ, HTMX, and Daisy UI.</p>
-        <button class="btn btn-secondary" hx-get="/" hx-target="body">Go Back Home</button>
-    }
+templ About(htmlContent string) {
+	@Base("About") {
+		<!-- <h1 class="text-3xl font-bold mb-4">About Us</h1> -->
+		<div class="prose max-w-none">
+			@templ.Raw(htmlContent)
+		</div>
+		<p class="mb-4">This is a simple two-page application using Go, Templ, HTMX, and Daisy UI.</p>
+		<button class="btn btn-secondary" hx-get="/" hx-target="body">Go Back Home</button>
+	}
 }

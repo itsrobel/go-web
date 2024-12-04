@@ -8,7 +8,10 @@ tasks:
       - go run main.go
   build:
     cmds:
+      - bun run build:css
+      - templ generate
       - go build -o ./bin/web main.go
+
     desc: "Build the Go project"
   # test:
   #   cmds:

@@ -4,30 +4,31 @@ import "web/internal/types"
 
 templ Profile(imgString string, ContactList []types.Contact) {
 	<div class="card md:max-w-96 bg-base-100 shadow-xl">
-		<div class="card-body sm:justify-center ">
+		<div class="card-body sm:justify-center flex flex-row md:flex-col">
 			<img
 				src={ imgString }
-				class="max-w-sm rounded-lg shadow-2xl"
+				class="md:h-full md:w-full h-24 w-24 rounded-full shadow-2xl"
 			/>
-			<h1 class="font-mono font-bold">Robel Schwarz | Louisville, KY</h1>
 			@ContactTemp(ContactList)
 		</div>
+		<!-- <h1 class="font-mono font-bold">Robel Schwarz | Louisville, KY</h1> -->
 	</div>
 }
 
-templ Home(FileList []string, ContactList []types.Contact) {
+//TODO: remove margin top on small, remove navbar on small
+templ Home(htmlContent string, FileList []string, ContactList []types.Contact) {
 	@Base("Home") {
-		<div class="flex flex-col md:flex-row md:justify-between">
+		<div class="flex flex-col md:flex-row md:justify-around">
 			@Profile("/static/img/pf1.jpg", ContactList)
 			<div>
-				<h1 class="text-5xl font-bold font-excali">Box Office News!</h1>
-				<p class="py-6">
-					Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-					quasi. In deleniti eaque aut repudiandae et a id nisi.
-				</p>
-				<button class="btn btn-primary">Get Started</button>
+				<!-- <div class="prose max-w-none"> -->
+				<!-- 	@templ.Raw(htmlContent) -->
 				<!-- </div> -->
-				<div class="flex flex-row">
+				<div class="card w-96 bg-base-100 shadow-xl">
+					<h1 class="text-5xl font-bold font-excali">Box Office News!</h1>
+					<div class="prose max-w-none">
+						@templ.Raw(htmlContent)
+					</div>
 					@BlogTemp(FileList)
 				</div>
 			</div>

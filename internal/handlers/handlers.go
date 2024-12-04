@@ -18,19 +18,44 @@ var blogDir = "content/blog"
 
 func HomeHandler(c *gin.Context) {
 	blogDir, _ := os.ReadDir(blogDir)
-
 	blogDirNames := make([]string, len(blogDir))
 	for i, file := range blogDir {
 		blogDirNames[i] = strings.Split(file.Name(), ".")[0]
 	}
-
 	fmt.Printf("Blog directory: %s\n", blogDirNames)
 
-	templates.Home(blogDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
+	bio, err := os.ReadFile("content/bio.md")
+
+	var htmlBio string
+	if err != nil {
+		// TODO: I should make an actual page for this later c.String(http.StatusNotFound, "Page not found")
+		htmlBio = "Page not found"
+	} else {
+		htmlBio = string(blackfriday.Run(bio,
+			blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
+		))
+	}
+
+	c.Writer.Header().Set("Blog-Type", "text/html")
+
+	templates.Home(htmlBio, blogDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
 }
 
 func AboutHandler(c *gin.Context) {
-	templates.About().Render(c.Request.Context(), c.Writer)
+	about, err := os.ReadFile("content/about.md")
+
+	var htmlBlog string
+	if err != nil {
+		// TODO: I should make an actual page for this later c.String(http.StatusNotFound, "Page not found")
+		htmlBlog = "Page not found"
+	} else {
+		htmlBlog = string(blackfriday.Run(about,
+			blackfriday.WithExtensions(blackfriday.CommonExtensions|blackfriday.AutoHeadingIDs),
+		))
+	}
+
+	c.Writer.Header().Set("Blog-Type", "text/html")
+	templates.About(htmlBlog).Render(c.Request.Context(), c.Writer)
 }
 
 func BlogHandler(c *gin.Context) {
