@@ -2,7 +2,6 @@ package templates
 
 templ About(htmlContent string) {
 	@Base("About") {
-		<!-- <h1 class="text-3xl font-bold mb-4">About Us</h1> -->
 		<div class="prose max-w-none">
 			@templ.Raw(htmlContent)
 		</div>

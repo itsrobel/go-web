@@ -1,5 +1,6 @@
 package templates
 
+//TODO: update colors to use theme
 templ NavLinks() {
 	<a href="/">
 		<h1>Home</h1>
@@ -14,6 +15,20 @@ templ NavLinks() {
 
 templ Nav() {
 	<div>
+		//NOTE:Normal nav
+		<div class="hidden md:flex w-full md:justify-center">
+			<nav class=" navbar bg-base-100 flex-none shadow-2xl font-bold font-excali flex justify-center space-x-8 mt-8 rounded-lg md:w-4/5 ">
+				@NavLinks()
+			</nav>
+		</div>
+		//NOTE: Mobile nav
+		<!-- Full-Screen Mobile Menu -->
+		<div class="mobile-menu fixed inset-0 dark:bg-gray-800 bg-gray-200 bg-opacity-95 hidden flex flex-col items-center justify-center space-y-4 z-50 transform -translate-x-full opacity-0 transition-all duration-500 ease-in-out">
+			<button class="close-button absolute top-4 right-4 focus:outline-none">
+				<i class="fa-solid fa-arrow-right-from-bracket"></i>
+			</button>
+			@NavLinks()
+		</div>
 		//NOTE: Mobile nav toggle
 		<div class="md:hidden">
 			<div class="z-10 fixed bottom-4 right-4">
@@ -22,23 +37,8 @@ templ Nav() {
 				</button>
 			</div>
 		</div>
-		//NOTE: Mobile nav
-		<!-- Full-Screen Mobile Menu -->
-		<div class="mobile-menu fixed inset-0 dark:bg-gray-800 bg-gray-200 bg-opacity-95 hidden flex flex-col items-center justify-center space-y-4 z-50 transform -translate-x-full opacity-0 transition-all duration-500 ease-in-out">
-			@NavLinks()
-			<button class="close-button absolute top-4 right-4 focus:outline-none">
-				<i class="fa-solid fa-arrow-right-from-bracket"></i>
-			</button>
-		</div>
-		//NOTE:Normal nav
-		<div class="hidden md:flex w-full md:justify-center">
-			<nav class=" navbar bg-base-100 flex-none shadow-2xl font-bold font-excali flex justify-center space-x-8 mt-8 rounded-lg md:w-4/5 ">
-				@NavLinks()
-				<!-- <div class="block"> -->
-				// </div>
-			</nav>
-		</div>
 	</div>
+	//TODO: Move this JS to it's own file and make the go templ function call instead of listeners
 	<script>
   document.addEventListener('DOMContentLoaded', function () {
     const btn = document.querySelector('button.menu-button');
