@@ -6,8 +6,9 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"web/internal/templates"
-	"web/internal/types"
+
+	"github.com/itsrobel/steflabs/internal/templates"
+	"github.com/itsrobel/steflabs/internal/types"
 
 	// "github.com/a-h/templ"
 	"github.com/gin-gonic/gin"

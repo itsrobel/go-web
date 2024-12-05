@@ -1,4 +1,4 @@
-module web
+module github.com/itsrobel/steflabs
 
 go 1.23
 

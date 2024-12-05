@@ -8,7 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-	"web/internal/handlers"
+
+	"github.com/itsrobel/steflabs/internal/handlers"
 
 	"github.com/gin-gonic/gin"
 )
