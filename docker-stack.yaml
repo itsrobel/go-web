@@ -38,3 +38,6 @@ services:
     deploy:
       update_config:
         order: start-first
+
+volumes:
+  letsencrypt:
