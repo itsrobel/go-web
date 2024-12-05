@@ -1,6 +1,6 @@
 services:
   app:
-    image: steflabs
+    image: ghcr.io/itsrobel/steflabs:${GIT_COMMIT_HASH:-latest}
     ports:
       - "80:8080"
     deploy:

@@ -19,6 +19,13 @@ COPY ./static ./static
 COPY ./content/ ./content/
 RUN go mod download 
 
+
+RUN --mount=type=cache,target=/go/pkg/mod/ \
+  --mount=type=bind,source=go.sum,target=go.sum \
+  --mount=type=bind,source=go.mod,target=go.mod \
+  go mod download -x
+
+
 COPY . .
 
 RUN go build -o ./bin/web main.go
