@@ -82,8 +82,8 @@ func BlogHandler(c *gin.Context) {
 func getContacts() []types.Contact {
 	contactInfo := []types.Contact{
 		{Name: "Email", Icon: "fa-envelope", Link: "mailto:itsrobel.schwarz@gmail.com"},
-		{Name: "GitHub", Icon: "fa-github", Link: "https://github.com/itsrobel"},
-		{Name: "LinkedIn", Icon: "fa-linkedin", Link: "https://www.linkedin.com/in/robel-schwarz/"},
+		{Name: "GitHub", Icon: "fa-brands fa-github", Link: "https://github.com/itsrobel"},
+		{Name: "LinkedIn", Icon: "fa-brands  fa-linkedin", Link: "https://www.linkedin.com/in/robel-schwarz/"},
 	}
 	return contactInfo
 }

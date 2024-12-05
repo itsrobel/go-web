@@ -10,9 +10,10 @@ tasks:
     cmds:
       - bun run build:css
       - templ generate
-      - go build -o ./bin/web main.go
+      - go build -o ./bin/app main.go
 
     desc: "Build the Go project"
+  #TODO: Make tests later
   # test:
   #   cmds:
   #     - go test ./...
@@ -21,7 +22,6 @@ tasks:
   docker-build:
     cmds:
       - docker build -t steflabs .
-
   docker-run:
     cmds:
       - docker run -d -p 80:8080 --name steflabs_container steflabs
