@@ -1,0 +1,8 @@
+services:
+  app:
+    image: steflabs
+    ports:
+      - "80:8080"
+    deploy:
+      update_config:
+        order: start-first

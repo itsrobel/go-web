@@ -4,10 +4,10 @@ import "web/internal/types"
 
 templ Profile(imgString string, ContactList []types.Contact) {
 	<div class="card md:max-w-96 bg-base-100 shadow-xl rounded-lg">
-		<div class="card-body sm:justify-center items-center flex flex-row md:flex-col">
+		<div class="card-body justify-center items-center flex flex-row md:flex-col">
 			<img
 				src={ imgString }
-				class="md:h-full md:w-full h-24 w-24 rounded-full shadow-2xl"
+				class="shadow-2xl hidden rounded-full md:flex md:h-full md:w-full"
 			/>
 			@ContactTemp(ContactList)
 		</div>

@@ -15,6 +15,8 @@ FROM golang:1.23-alpine AS go-build
 
 WORKDIR /app
 COPY go.mod go.sum ./
+COPY ./static ./static
+COPY ./content/ ./content/
 RUN go mod download 
 
 COPY . .
@@ -28,6 +30,10 @@ WORKDIR /app
 
 
 COPY --from=go-build /app/bin/web .
+COPY --from=go-build /app/static ./static
+COPY --from=go-build /app/content ./content
 COPY --from=css-build /app/static/css/output.css ./static/css/output.css
+
+EXPOSE 8080
 
 CMD ["./web"]
