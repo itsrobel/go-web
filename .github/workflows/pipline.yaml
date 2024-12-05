@@ -9,15 +9,16 @@ permissions:
 
 jobs:
   run-tests:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-    - name: Setup Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: "1.23.x"
-    - name: Install dependencies
-      run: go get .
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - name: Install dependencies
+        run: go get .
+
   #TODO: Write tests in the future
   # - name: Test with the Go CLI
   #   run: go test ./...
