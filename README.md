@@ -18,8 +18,8 @@ It has a dynamic content management system where it watches for changes in the "
 - [ ] Docker Deployment
   - [x] Create the docker compose
   - [x] Create Docker Stack Deployment (Refer to dreams of code)
-  - [ ] setup traefik for https certs and load balancing
   - [ ] setup github actions for auto deploy
+  - [ ] setup traefik for https certs and load balancing
 
 
 - [ ] Finish Go Sync
