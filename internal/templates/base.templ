@@ -18,12 +18,10 @@ templ Base(title string) {
 			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 		</head>
 		<body>
-			<div class="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:20px_20px]">
-				@Nav()
-				<main class="container md:mx-auto md:mt-8">
-					{ children... }
-				</main>
-			</div>
+			@Nav()
+			<main class="container md:mx-auto md:mt-8">
+				{ children... }
+			</main>
 		</body>
 	</html>
 }
