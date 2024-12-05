@@ -4,7 +4,6 @@ go 1.23
 
 require (
 	github.com/a-h/templ v0.2.793
-	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-gonic/gin v1.10.0
 	github.com/russross/blackfriday/v2 v2.1.0
 )
