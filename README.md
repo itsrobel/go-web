@@ -18,7 +18,8 @@ It has a dynamic content management system where it watches for changes in the "
 - [ ] Docker Deployment
   - [x] Create the docker compose
   - [x] Create Docker Stack Deployment (Refer to dreams of code)
-  - [ ] setup github actions for auto deploy
+  - [x] setup github actions for auto deploy
+  - [ ] figure out a way to generate the templ files before running the test for templates
   - [ ] setup traefik for https certs and load balancing
 
 
@@ -26,3 +27,5 @@ It has a dynamic content management system where it watches for changes in the "
 - [ ] Add Admin Signin for Go Sync
 - [ ] Add ExacliDraw support
 - [ ] Add public timed links
+
+
