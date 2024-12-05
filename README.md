@@ -16,8 +16,11 @@ It has a dynamic content management system where it watches for changes in the "
 
 - [ ] add more details and use markdown toml config
 - [ ] Docker Deployment
-  - [ ] Create the docker compose
-  - [ ] Create Docker Stack Deployment (Refer to dreams of code)
+  - [x] Create the docker compose
+  - [x] Create Docker Stack Deployment (Refer to dreams of code)
+  - [ ] setup traefik for https certs and load balancing
+  - [ ] setup github actions for auto deploy
+
 
 - [ ] Finish Go Sync
 - [ ] Add Admin Signin for Go Sync
