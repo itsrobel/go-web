@@ -9,9 +9,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/itsrobel/steflabs/internal/handlers"
-
 	"github.com/gin-gonic/gin"
+	"github.com/itsrobel/steflabs/internal/handlers"
 )
 
 func main() {

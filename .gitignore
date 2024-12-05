@@ -1,5 +1,5 @@
 node_modules/*
 bin/*
-internal/templates/*.go
+# internal/templates/*.go
 
 static/css/output.css*
