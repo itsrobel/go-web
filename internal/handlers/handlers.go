@@ -37,7 +37,7 @@ func HomeHandler(c *gin.Context) {
 		))
 	}
 
-	c.Writer.Header().Set("Blog-Type", "text/html")
+	c.Writer.Header().Set("Content-Type", "text/html")
 
 	templates.Home(htmlBio, blogDirNames, getContacts()).Render(c.Request.Context(), c.Writer)
 }
@@ -55,7 +55,7 @@ func AboutHandler(c *gin.Context) {
 		))
 	}
 
-	c.Writer.Header().Set("Blog-Type", "text/html")
+	c.Writer.Header().Set("Content-Type", "text/html")
 	templates.About(htmlBlog).Render(c.Request.Context(), c.Writer)
 }
 
@@ -74,7 +74,7 @@ func BlogHandler(c *gin.Context) {
 	}
 
 	// Render the template with the HTML blog
-	c.Writer.Header().Set("Blog-Type", "text/html")
+	c.Writer.Header().Set("Content-Type", "text/html")
 	// Pass the HTML blog as templ.HTML type
 	templates.BlogPage(htmlBlog).Render(c.Request.Context(), c.Writer)
 }
@@ -89,8 +89,8 @@ func getContacts() []types.Contact {
 }
 
 func RedirectSaveContact(c *gin.Context) {
-	// fmt.Println(c.Request.Header)
 	deviceType := c.GetHeader("Devicetype") // Example custom header
+
 	if deviceType == "Mobile" {
 		fmt.Printf("Device-Type: %s \n", deviceType)
 		c.Header("HX-Redirect", "/save-contact")
@@ -120,8 +120,8 @@ func SaveContact(c *gin.Context) {
 		contact.Lname, contact.Fname, contact.Fname, contact.Lname, contact.Phone, contact.Email,
 	)
 
-	c.Header("Blog-Type", "text/vcard; charset=utf-8")
-	c.Header("Blog-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
+	c.Header("Content-Type", "text/vcard; charset=utf-8")
+	c.Header("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
 	c.Header("HX-Redirect", "/")
 	c.String(http.StatusOK, vcard)
 }
