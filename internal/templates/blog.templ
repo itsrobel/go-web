@@ -2,8 +2,10 @@ package templates
 
 templ BlogPage(htmlContent string) {
 	@Base("Content Page") {
-		<div class="prose max-w-none">
-			@templ.Raw(htmlContent)
+		<div class="p-8 sm:justify-center items-center flex flex-col">
+			<div class="prose max-w-none">
+				@templ.Raw(htmlContent)
+			</div>
 		</div>
 	}
 }

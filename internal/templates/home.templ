@@ -4,7 +4,7 @@ import "github.com/itsrobel/steflabs/internal/types"
 
 templ Profile(imgString string, ContactList []types.Contact) {
 	<div class="card md:max-w-96 bg-base-100 shadow-xl rounded-lg">
-		<div class="card-body justify-center items-center flex flex-row md:flex-col">
+		<div class="justify-center items-center flex flex-row md:flex-col">
 			<img
 				src={ imgString }
 				class="shadow-2xl hidden rounded-full md:flex md:h-full md:w-full"
@@ -15,7 +15,7 @@ templ Profile(imgString string, ContactList []types.Contact) {
 }
 
 templ Bio(htmlContent string, FileList []string) {
-	<div class="card-body sm:justify-center items-center flex flex-col">
+	<div class="p-8 sm:justify-center items-center flex flex-col">
 		<div class="prose max-w-none">
 			@templ.Raw(htmlContent)
 		</div>
