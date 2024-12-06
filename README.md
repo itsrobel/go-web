@@ -8,6 +8,7 @@ It has a dynamic content management system where it watches for changes in the "
 - [x] Templ For the templating system since I refuse to use JS
 - [x] HTMX for client side request handling
 - [x] Daisy UI since find tailwind to be generally a nightmare to work with
+- [ ] add save contact button to mobile
 
 - [x] Finish Designing the UI and make it look nice
 - [ ] Make pages
@@ -15,12 +16,12 @@ It has a dynamic content management system where it watches for changes in the "
   - [ ] projects
 
 - [ ] add more details and use markdown toml config
-- [ ] Docker Deployment
+- [x] Docker Deployment
   - [x] Create the docker compose
   - [x] Create Docker Stack Deployment (Refer to dreams of code)
   - [x] setup github actions for auto deploy
-  - [ ] figure out a way to generate the templ files before running the test for templates
-  - [ ] setup traefik for https certs and load balancing
+  - [x] figure out a way to generate the templ files before running the test for templates
+  - [x] setup traefik for https certs and load balancing
 
 
 - [ ] Finish Go Sync

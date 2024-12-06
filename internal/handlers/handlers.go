@@ -89,8 +89,17 @@ func getContacts() []types.Contact {
 }
 
 func RedirectSaveContact(c *gin.Context) {
-	c.Header("HX-Redirect", "/save-contact")
-	c.Status(200)
+	// fmt.Println(c.Request.Header)
+	deviceType := c.GetHeader("Devicetype") // Example custom header
+	if deviceType == "Mobile" {
+		fmt.Printf("Device-Type: %s \n", deviceType)
+		c.Header("HX-Redirect", "/save-contact")
+		c.Status(200)
+	} else {
+		fmt.Println("device is not mobile")
+		c.Header("HX-Redirect", "/")
+		c.Status(304)
+	}
 }
 
 func SaveContact(c *gin.Context) {
@@ -113,5 +122,6 @@ func SaveContact(c *gin.Context) {
 
 	c.Header("Blog-Type", "text/vcard; charset=utf-8")
 	c.Header("Blog-Disposition", fmt.Sprintf("attachment; filename=\"%s.vcf\"", contact.Fname))
+	c.Header("HX-Redirect", "/")
 	c.String(http.StatusOK, vcard)
 }
