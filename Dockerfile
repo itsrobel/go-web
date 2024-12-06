@@ -27,7 +27,9 @@ COPY --from=generate-stage /app /app
 RUN CGO_ENABLED=0 GOOS=linux go build -o /app/app
 
 # Final Stage: Create runtime image
-FROM ubuntu:22.04 AS runtime
+# FROM ubuntu:22.04 AS runtime
+FROM alpine:3.21 AS runtime
+
 WORKDIR /app
 
 # Copy built application and required assets from previous stages
